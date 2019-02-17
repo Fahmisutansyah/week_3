@@ -1,30 +1,24 @@
-function groupAnimals(animals) {
-    // you can only write your code here!
-    animals.sort();
-    var hewan = [];
-    var huruf = animals[0][0];
-    var kebunBinatang = [];
-    
-    
-    for (var i = 0; i < animals.length; i ++) {
-      if (animals[i][0] === huruf) {
-        hewan.push(animals[i]);
+function mengelompokkanAngka(arr) {
+    var result = [[],[],[]];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] % 3 === 0) {
+        result[2].push(arr[i]);
+        continue;
       }
-      else {
-        kebunBinatang.push(hewan);
-        hewan = [];
-        huruf = animals[i][0];
-        hewan.push(animals[i]);
+      if (arr[i] % 2 !== 0) {
+        result[1].push(arr[i]);
+        continue;
       }
-      if (i === animals.length-1) {
-        kebunBinatang.push(hewan);
+      if (arr[i] % 2 === 0) {
+        result[0].push(arr[i]);
+        continue;
       }
     }
-    return kebunBinatang;
+    return result;
   }
   
   // TEST CASES
-  console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil']));
-  // [ ['ayam', 'anoa'], ['cacing'], ['kuda', 'kancil'] ]
-  console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak' ]));
-  // [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda'], ['unta'] ]
+  console.log(mengelompokkanAngka([2, 4, 6])); // [ [2, 4], [], [6] ]
+  console.log(mengelompokkanAngka([1, 2, 3, 4, 5, 6, 7, 8, 9])); // [ [ 2, 4, 8 ], [ 1, 5, 7 ], [ 3, 6, 9 ] ]
+  console.log(mengelompokkanAngka([100, 151, 122, 99, 111])); // [ [ 100, 122 ], [ 151 ], [ 99, 111 ] ]
+  console.log(mengelompokkanAngka([])); // [ [], [], [] ]
